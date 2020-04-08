@@ -1,0 +1,60 @@
+<div *ngIf="error">ID dengan Mata kuliah {{ this.id }} tidak ditemukan</div>
+
+<form>
+  <h1>Form Mata Kuliah</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Mata Kuliah</mat-label>
+    <input matInput placeholder="Masukan Mata Kuliah"
+      name="namamatkul" id="namamatkul" [(ngModel)]="matkul.namamatkul" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Semester</mat-label>
+    <mat-select name="semester" id="semester" [(ngModel)]="matkul.semester">
+      <mat-option value="Ganjil">Ganjil</mat-option>
+      <mat-option value="Genap">Genap</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Hari</mat-label>
+    <input matInput placeholder="Masukan Hari dan Jam Kuliah" name="hari"
+      id="hari" [(ngModel)]="matkul.hari" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Nama Dosen</mat-label>
+    <input matInput placeholder="Masukan Nama Dosen" name="dosen"
+      id="dosen" [(ngModel)]="matkul.dosen" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Tahun Ajaran</mat-label>
+    <mat-select name="tahun" id="tahun" [(ngModel)]="matkul.tahun">
+      <mat-option value="2020/2021">
+        2020/2021
+      </mat-option>
+      <mat-option value="2021/2022">
+        2021/2022
+      </mat-option>
+      <mat-option value="2022/2023">
+        2022/2023
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="buttons">
+    <div *ngIf="update">
+      <button mat-raised-button color="warn" (click)="deleteMatkul()">
+        Hapus
+      </button>
+      <button mat-raised-button color="primary" (click)="updateMatkul()">
+        Update
+      </button>
+    </div>
+    <div *ngIf="!update">
+      <button mat-raised-button (click)="postMatkul()" color="primary">
+        Tambah
+      </button>
+    </div>
+  </div>
+</form>
